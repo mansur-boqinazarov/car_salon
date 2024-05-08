@@ -4,6 +4,11 @@ package uz.pdp.backend.enums.cars.carnames;
  * @author To'lqin Ruzimbayev
  * @since 08/May/2024 16/29/28
  */
+
+  /**
+   *  Bu enum class BYD markasining turli model va versiyalarini ifodalaydi.
+   */
+
 public enum Byd implements CarName{
     BYD_HAN,
     BYD_CHAZOR,

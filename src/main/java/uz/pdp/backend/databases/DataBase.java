@@ -16,6 +16,12 @@ import java.util.List;
 import java.util.UUID;
 
 public class DataBase<T extends BaseModel> {
+    /**
+     * Berilgan model obyektini ma'lumotlar bazasiga saqlash.
+     *
+     * @param model     Saqlanadigan model obyekti.
+     * @param FILE_URL  Obyekt saqlanadigan faylning URL manzili.
+     */
     public <T extends BaseModel> void SAVE(T model, String FILE_URL) {
         Gson gson = new GsonBuilder().create();
         Path path = Paths.get(FILE_URL);
@@ -27,6 +33,11 @@ public class DataBase<T extends BaseModel> {
         }
     }
 
+    /**
+     * Ma'lum bir ID boyicha model obyektini fayldan olish.
+     *
+     * @return Olingan model obyekti, agar topilmasa null qaytariladi.
+     */
     public <T extends BaseModel> T GET(UUID id, String FILE_URL, Class<T> clazz) {
         Gson gson = new Gson();
         Path path = Paths.get(FILE_URL);
@@ -43,6 +54,13 @@ public class DataBase<T extends BaseModel> {
         return null;
     }
 
+    /**
+     * Barcha model obyektlarni fayldan olish.
+     *
+     * @param FILE_URL  Obyekt olinadigan faylning URL manzili.
+     * @param clazz     Obyekt klassi.
+     * @return          Olingan barcha model obyektlarining ro'yxati.
+     */
     public  <T extends BaseModel> List<T> GET_ALL(String FILE_URL, Class<T> clazz) {
         Path path = Paths.get(FILE_URL);
         List<T> models = new ArrayList<>();
@@ -59,6 +77,13 @@ public class DataBase<T extends BaseModel> {
         return models;
     }
 
+    /**
+     * Ma'lum bir ID boyicha model obyektini fayldan o'chirish.
+     * @param id        O'chirish kerak bo'lgan modelning unikal ID'si.
+     * @param FILE_URL  Obyekt olinadigan faylning URL manzili.
+     * @param FILE_NAME O'chirilgan fayl nomi.
+     * @param clazz     Obyekt klassi.
+     */
     public  void DELETE(UUID id, String FILE_URL, String FILE_NAME, Class<T> clazz) {
         Path path = Paths.get(FILE_URL);
         List<T> models = new ArrayList<>();

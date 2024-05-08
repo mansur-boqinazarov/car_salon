@@ -4,6 +4,11 @@ package uz.pdp.backend.enums.cars.carnames;
  * @author To'lqin Ruzimbayev
  * @since 08/May/2024 16/07/22
  */
+
+/**
+ *  Bu enum class BMW markasining turli model va versiyalarini ifodalaydi.
+ */
+
 public enum Bmw implements CarName{
     X5_M_SUV,
     X6_COUPE_SUV,

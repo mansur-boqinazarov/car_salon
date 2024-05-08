@@ -7,6 +7,7 @@ import uz.pdp.backend.service.userservice.UserService;
 import uz.pdp.backend.service.userservice.UserServiceimp;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author To'lqin Ruzimbayev
@@ -14,9 +15,5 @@ import java.util.Date;
  */
 public class Test {
     public static void main(String[] args) {
-        UserService userService = new UserServiceimp();
-        userService.create(
-                new User(new Passport("To'lqin", "Ruzimbayev", "O'tkir o'g'li", new Date(), "KA", "0997251"), "+998977152600", Role.USER)
-        );
     }
 }

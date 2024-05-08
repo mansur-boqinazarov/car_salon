@@ -13,6 +13,5 @@ public class CarSalon extends BaseModel{
     private Date openTime;
     private Date closeTime;
     private String phoneNumber;
-    //!karlarni listini saqlash kerak;
     }
 

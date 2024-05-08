@@ -1,5 +1,6 @@
 package uz.pdp.backend.model.car;
 
+import lombok.*;
 import uz.pdp.backend.enums.cars.carmodel.CarModel;
 import uz.pdp.backend.enums.cars.colors.CarColor;
 import uz.pdp.backend.enums.cars.carnames.CarName;
@@ -9,7 +10,10 @@ import uz.pdp.backend.model.basemodel.BaseModel;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Car extends BaseModel {
     private UUID autoSalonID;
     private CarModel model;

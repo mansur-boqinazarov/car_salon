@@ -13,6 +13,9 @@ import java.util.UUID;
  * @author To'lqin Ruzimbayev
  * @since 08/May/2024 17/12/24
  */
+/**
+ * Car uchun DTO
+ * */
 public record CarDTO(UUID autosalonID, CarModel carModel,
                      CarName name, CarColor color,
                      Date madeDate, double price,

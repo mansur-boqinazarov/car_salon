@@ -4,6 +4,9 @@ package uz.pdp.backend.enums.cars.carnames;
  * @author To'lqin Ruzimbayev
  * @since 08/May/2024 16/19/15
  */
+/**
+ *  Bu enum class Mercedes markasining turli model va versiyalarini ifodalaydi.
+ */
 public enum Mercedes implements CarName{
     MERCEDES_BENZ_CLA_AMG,
     MERCEDES_BENZ_EQA,
