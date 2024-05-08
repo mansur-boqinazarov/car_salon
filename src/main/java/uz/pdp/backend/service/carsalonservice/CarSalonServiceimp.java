@@ -1,5 +1,6 @@
 package uz.pdp.backend.service.carsalonservice;
 
+import uz.pdp.backend.databases.DataBase;
 import uz.pdp.backend.model.carsalon.CarSalon;
 
 import java.util.List;
@@ -11,16 +12,18 @@ import java.util.UUID;
  */
 public class CarSalonServiceimp implements CarSalonService{
 
-    private final String urlFile = "src/main/resources/databases/CarSalon.json";
-    private final String nameFile = "CarSalon.json";
+    private static DataBase<CarSalon> dataBase = new DataBase<>();
+
+    private final String FILE_URL = "src/main/resources/databases/CarSalon.json";
+    private final String FILE_NAME = "CarSalon.json";
 
     @Override
     public void create(CarSalon carSalon) {
-
+        dataBase.SAVE(carSalon, FILE_URL);
     }
 
     public CarSalon read(UUID id) {
-        return null;
+        return dataBase.GET(id, FILE_URL, CarSalon.class);
     }
 
     @Override
@@ -30,11 +33,11 @@ public class CarSalonServiceimp implements CarSalonService{
 
     @Override
     public void delete(UUID id) {
-
+        dataBase.DELETE(id, FILE_URL, FILE_NAME, CarSalon.class);
     }
 
     @Override
     public List<CarSalon> readAll() {
-        return List.of();
+        return dataBase.GET_ALL(FILE_URL, CarSalon.class);
     }
 }

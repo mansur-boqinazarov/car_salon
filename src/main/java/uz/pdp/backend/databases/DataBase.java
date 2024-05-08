@@ -13,11 +13,12 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class DataBase<T extends BaseModel> {
-    public <T extends BaseModel> void SAVE(T model, String FILE_NAME) {
+    public <T extends BaseModel> void SAVE(T model, String FILE_URL) {
         Gson gson = new GsonBuilder().create();
-        Path path = Paths.get(FILE_NAME);
+        Path path = Paths.get(FILE_URL);
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.APPEND)) {
             gson.toJson(model, writer);
             writer.newLine();
@@ -26,9 +27,9 @@ public class DataBase<T extends BaseModel> {
         }
     }
 
-    public <T extends BaseModel> T GET(String id, String FILE_NAME, Class<T> clazz) {
+    public <T extends BaseModel> T GET(UUID id, String FILE_URL, Class<T> clazz) {
         Gson gson = new Gson();
-        Path path = Paths.get(FILE_NAME);
+        Path path = Paths.get(FILE_URL);
         try (BufferedReader reader = Files.newBufferedReader(path)) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -42,8 +43,8 @@ public class DataBase<T extends BaseModel> {
         return null;
     }
 
-    public  <T extends BaseModel> List<T> GET_ALL(String FILE_NAME, Class<T> clazz) {
-        Path path = Paths.get(FILE_NAME);
+    public  <T extends BaseModel> List<T> GET_ALL(String FILE_URL, Class<T> clazz) {
+        Path path = Paths.get(FILE_URL);
         List<T> models = new ArrayList<>();
         Gson gson = new Gson();
         try (BufferedReader reader = Files.newBufferedReader(path)) {
@@ -58,8 +59,8 @@ public class DataBase<T extends BaseModel> {
         return models;
     }
 
-    public  void DELETE(String id, String FILE_NAME, String DELETING_FILE_NAME, Class<T> clazz) {
-        Path path = Paths.get(FILE_NAME);
+    public  void DELETE(UUID id, String FILE_URL, String FILE_NAME, Class<T> clazz) {
+        Path path = Paths.get(FILE_URL);
         List<T> models = new ArrayList<>();
         Gson gson = new Gson();
         try (BufferedReader reader = Files.newBufferedReader(path)) {
@@ -69,7 +70,7 @@ public class DataBase<T extends BaseModel> {
                 if (!model.getId().equals(id))
                     models.add(model);
             }
-            Path path1 = Paths.get("database", DELETING_FILE_NAME);
+            Path path1 = Paths.get("src/main/resources/databases", FILE_NAME);
             Files.deleteIfExists(path1);
                     Files.createFile(path1);
             try(BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.APPEND)) {

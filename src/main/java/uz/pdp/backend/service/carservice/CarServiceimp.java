@@ -1,5 +1,6 @@
 package uz.pdp.backend.service.carservice;
 
+import uz.pdp.backend.databases.DataBase;
 import uz.pdp.backend.model.car.Car;
 
 import java.util.List;
@@ -11,17 +12,19 @@ import java.util.UUID;
  */
 public class CarServiceimp implements CarService{
 
-    private final String urlFile = "src/main/resources/databases/Car.json";
-    private final String nameFile = "Car.json";
+    private static DataBase<Car> dataBase = new DataBase<>();
+
+    private final String FILE_URL = "src/main/resources/databases/Car.json";
+    private final String FILE_NAME = "Car.json";
 
     @Override
     public void create(Car car) {
-
+        dataBase.SAVE(car, FILE_URL);
     }
 
     @Override
     public Car read(UUID id) {
-        return null;
+        return dataBase.GET(id, FILE_URL, Car.class);
     }
 
     @Override
@@ -31,11 +34,11 @@ public class CarServiceimp implements CarService{
 
     @Override
     public void delete(UUID id) {
-
+        dataBase.DELETE(id, FILE_URL, FILE_NAME, Car.class);
     }
 
     @Override
     public List<Car> readAll() {
-        return List.of();
+        return dataBase.GET_ALL(FILE_URL, Car.class);
     }
 }
