@@ -1,4 +1,4 @@
-package uz.pdp.backend.model;
+package uz.pdp.backend.model.basemodel;
 
 import lombok.Getter;
 

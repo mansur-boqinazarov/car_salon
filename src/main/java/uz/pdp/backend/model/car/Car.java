@@ -1,20 +1,24 @@
 package uz.pdp.backend.model.car;
 
-import uz.pdp.backend.model.BaseModel;
+import uz.pdp.backend.enums.cars.carmodel.CarModel;
+import uz.pdp.backend.enums.cars.colors.CarColor;
+import uz.pdp.backend.enums.cars.carnames.CarName;
+import uz.pdp.backend.enums.cars.fuelroute.FuelRoute;
+import uz.pdp.backend.model.basemodel.BaseModel;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 public class Car extends BaseModel {
     private UUID autoSalonID;
-    private String model;
-    private String name;
-    private String color;
+    private CarModel model;
+    private CarName name;
+    private CarColor color;
     private Date madeDate;
     private double price;
-//    private Modfication modfication;
-    private String urlPhoto;
+    private List<String> urlPhoto;  // kamida 3 ta rasm bo'ladi shuning uxhun stringlar listi dedim
     private String divigatel;
     private int carCount;
-    private String mashinaTuri;
+    private FuelRoute fuelRoute;
 }

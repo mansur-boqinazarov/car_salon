@@ -1,6 +1,6 @@
 package uz.pdp.backend.model.carsalon;
 
-import uz.pdp.backend.model.BaseModel;
+import uz.pdp.backend.model.basemodel.BaseModel;
 
 import java.util.Date;
 import java.util.UUID;

@@ -1,4 +1,4 @@
-package uz.pdp.backend.enums;
+package uz.pdp.backend.enums.roles;
 
 public enum Role {
     ADMIN,
