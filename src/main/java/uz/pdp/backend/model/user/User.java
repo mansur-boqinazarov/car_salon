@@ -11,7 +11,6 @@ public class User extends BaseModel {
     private String phoneNumber;
     private Role role;
 
-    public static void main(String[] args) {
+            //TEST
 
-    }
 }

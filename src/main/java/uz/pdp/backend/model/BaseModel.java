@@ -11,9 +11,4 @@ public class BaseModel {
     public BaseModel() {
         this.id = UUID.randomUUID();
     }
-
-    public static void main(String[] args) {
-        System.out.println("BaseModel");
-    }
-    
 }
