@@ -4,6 +4,7 @@ import uz.pdp.backend.databases.DataBase;
 import uz.pdp.backend.model.carsalon.CarSalon;
 
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.UUID;
 
 /**
@@ -19,8 +20,8 @@ public class CarSalonServiceimp implements CarSalonService{
 
     private static DataBase<CarSalon> dataBase = new DataBase<>();
 
-    private final String FILE_URL = "src/main/resources/databases/CarSalon.json";
-    private final String FILE_NAME = "CarSalon.json";
+    private final String FILE_URL = ResourceBundle.getBundle("settings").getString("carsalon.fileurl");
+    private final String FILE_NAME = ResourceBundle.getBundle("Settings").getString("carsalon.filename");
 
     /**
      * Avtomobil salon yaratish.

@@ -7,11 +7,14 @@ import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
+import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class GmailServiceimp implements GmailService {
-
-    public static String USERNAME = "dizzymansur@gmail.com";
-    public  static  String PASSWORD = "pvicwvzxbvzbnfud";
+/**bu joyda username va passwordni settings.propertiesdan oladi*/
+    private static final String USERNAME = ResourceBundle.getBundle("settings").getString("gmail.username");
+    private static final String PASSWORD = ResourceBundle.getBundle("settings").getString("gmail.password");
 
     @Override
     @SneakyThrows
@@ -50,13 +53,26 @@ public class GmailServiceimp implements GmailService {
         properties.put("mail.smtp.port", "587");
         return properties;
     }
-
+/**
+ * bu verificationni tekshirib boolean qaytaradi
+ */
     @Override
     public boolean checkVerificationCode(String verificationCode) {
         return verificationCode.equals(getVerificationCode());
     }
-
+/**
+ * verification codeni qaytaradi, bu faqat servicega tegishli
+ */
     private String getVerificationCode() {
         return String.valueOf((int)(Math.random() * 9000) + 1000);
+    }
+    /**
+     * bu gmail sintaksis jihatdan to'g'ri yozilganmi yoki yo'qmi tekshiradi
+     */
+    public boolean isValidGmail(String gmail) {
+        String regexPattern = "^[A-Za-z][A-Za-z0-9._%+-]*@gmail\\.com$";
+        Pattern pattern = Pattern.compile(regexPattern);
+        Matcher matcher = pattern.matcher(gmail);
+        return matcher.matches();
     }
 }

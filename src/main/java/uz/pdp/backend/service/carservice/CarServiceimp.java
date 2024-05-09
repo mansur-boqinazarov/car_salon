@@ -4,6 +4,7 @@ import uz.pdp.backend.databases.DataBase;
 import uz.pdp.backend.model.car.Car;
 
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.UUID;
 
 /**
@@ -18,8 +19,8 @@ public class CarServiceimp implements CarService{
 
     private static DataBase<Car> dataBase = new DataBase<>();
 
-    private final String FILE_URL = "src/main/resources/databases/Car.json";
-    private final String FILE_NAME = "Car.json";
+    private final String FILE_URL = ResourceBundle.getBundle("settings").getString("car.fileurl");
+    private final String FILE_NAME = ResourceBundle.getBundle("Settings").getString("car.filename");
 
     /**
      * Avtomobil yaratish.

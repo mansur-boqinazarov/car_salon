@@ -8,4 +8,6 @@ import uz.pdp.backend.service.baseservice.BaseService;
  * @since 08/May/2024 17/07/30
  */
 public interface UserService extends BaseService<User>{
+    boolean isValidPhoneNumber(String phoneNumber);
+    boolean isValidPassword(String password);
 }
