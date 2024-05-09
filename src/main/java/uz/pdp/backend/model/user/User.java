@@ -12,7 +12,4 @@ public class User extends BaseModel {
     private Passport passportID;
     private String phoneNumber;
     private Role role;
-
-            //TEST
-
 }

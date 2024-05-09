@@ -14,6 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+
 public class Car extends BaseModel {
     private UUID autoSalonID;
     private CarModel model;
