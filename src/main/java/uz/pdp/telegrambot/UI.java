@@ -1,6 +1,5 @@
-package uz.pdp.frontend;
+package uz.pdp.telegrambot;
 
-import uz.pdp.frontend.myBot.MyBot;
 public class UI {
     public static void main(String[] args) {
 
