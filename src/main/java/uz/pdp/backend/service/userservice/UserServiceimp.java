@@ -61,7 +61,7 @@ public class UserServiceimp implements UserService{
         return dataBase.GET_ALL(FILE_URL, User.class);
     }
     /**
-     * phoneNUmberni check qilib qaytaradi
+     * phoneNumberni check qilib qaytaradi
      */
 
     public boolean isValidPhoneNumber(String phoneNumber) {
