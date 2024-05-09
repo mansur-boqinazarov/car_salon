@@ -13,8 +13,6 @@ import java.util.UUID;
  */
 /**
  * Ma'lumotlar bazasidagi avtomobil salonlari uchun xizmatni taqdim etuvchi klass.
- *
- * @since 08/May/2024 17/06/03
  */
 public class CarSalonServiceimp implements CarSalonService{
 

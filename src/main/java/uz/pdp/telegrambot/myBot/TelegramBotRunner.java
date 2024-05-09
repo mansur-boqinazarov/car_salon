@@ -1,6 +1,6 @@
 package uz.pdp.telegrambot.myBot;
 
-import com.pengrad.telegrambot.TelegramBot;
+import  com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;
 import com.pengrad.telegrambot.model.Update;
 
@@ -16,11 +16,13 @@ public class TelegramBotRunner {
 
     public static void main(String[] args) {
         bot.setUpdatesListener(updates -> {
+
                     for (Update update : updates) {
                         CompletableFuture.runAsync(() -> {
                             handleUpdate.get().manage(update);
                         }, executor);
                     }
+
                     return UpdatesListener.CONFIRMED_UPDATES_ALL;
                 }
         );

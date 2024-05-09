@@ -1,8 +1,8 @@
 package uz.pdp.telegrambot.update.handle;
 
 import com.pengrad.telegrambot.model.Update;
-import uz.pdp.telegrambot.update.CallbackQuery.CallbackQueryHandler;
-import uz.pdp.telegrambot.update.TextMessageQuery.MessageHandler;
+import uz.pdp.telegrambot.update.callbackQuery.CallbackQueryHandler;
+import uz.pdp.telegrambot.update.textMessageQuery.MessageHandler;
 import uz.pdp.telegrambot.update.basehandle.BaseHandle;
 
 /**
@@ -18,10 +18,9 @@ public class HandleUpdate {
     }
 
     public void manage(Update update) {
-        if(update.message()!=null){
+        if (update.message() != null) {
             this.messageHandle.handle(update);
-        }
-        else if(update.callbackQuery()!=null){
+        } else if (update.callbackQuery() != null) {
             this.callbackQueryHandle.handle(update);
         }
     }
