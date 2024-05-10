@@ -11,5 +11,7 @@ import uz.pdp.backend.model.basemodel.BaseModel;
 public class User extends BaseModel {
     private Passport passportID;
     private String phoneNumber;
+    private String email;
+    private String password;
     private Role role;
 }

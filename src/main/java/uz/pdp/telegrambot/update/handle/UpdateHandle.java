@@ -8,11 +8,11 @@ import uz.pdp.telegrambot.update.basehandle.BaseHandle;
 /**
  * Updatelarni handle qilish
  */
-public class HandleUpdate {
+public class UpdateHandle {
     private BaseHandle messageHandle;
     private BaseHandle callbackQueryHandle;
 
-    public HandleUpdate() {
+    public UpdateHandle() {
         this.messageHandle = new MessageHandler();
         this.callbackQueryHandle = new CallbackQueryHandler();
     }

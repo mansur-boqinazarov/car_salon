@@ -1,6 +1,6 @@
 package uz.pdp.config;
 
-import uz.pdp.telegrambot.update.handle.HandleUpdate;
+import uz.pdp.telegrambot.update.handle.UpdateHandle;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -12,6 +12,6 @@ import java.util.concurrent.Executors;
 public class ThreadSafeBeansContainer {
 
     public static final ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-    public static final ThreadLocal<HandleUpdate> handleUpdate = ThreadLocal.withInitial(HandleUpdate::new);
+    public static final ThreadLocal<UpdateHandle> handleUpdate = ThreadLocal.withInitial(UpdateHandle::new);
 
 }

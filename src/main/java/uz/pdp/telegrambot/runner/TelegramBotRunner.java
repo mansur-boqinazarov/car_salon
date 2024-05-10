@@ -1,4 +1,4 @@
-package uz.pdp.telegrambot.myBot;
+package uz.pdp.telegrambot.runner;
 
 import  com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;

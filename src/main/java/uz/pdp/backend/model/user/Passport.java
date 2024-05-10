@@ -14,6 +14,6 @@ public class Passport extends BaseModel {
     private String lastName;
     private String fatherName;
     private Date date;
-    private String series;
+    private String passportSeries;
     private String passportNumber;
 }
