@@ -18,12 +18,13 @@ import java.util.UUID;
 public class Car extends BaseModel {
     private UUID autoSalonID;
     private CarModel model;
-    private CarName name;
+    private String name;
     private CarColor color;
     private Date madeDate;
     private double price;
-    private List<String> urlPhoto;  // kamida 3 ta rasm bo'ladi shuning uxhun stringlar listi dedim
+    private String urlPhoto;  // kamida 3 ta rasm bo'ladi shuning uxhun stringlar listi dedim
     private String divigatel;
     private int carCount;
     private FuelRoute fuelRoute;
+
 }

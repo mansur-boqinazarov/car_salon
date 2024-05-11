@@ -3,9 +3,11 @@ package uz.pdp.backend.service.carservice;
 import uz.pdp.backend.databases.DataBase;
 import uz.pdp.backend.model.car.Car;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 /**
  * @author To'lqin Ruzimbayev
@@ -57,5 +59,13 @@ public class CarServiceimp implements CarService{
     @Override
     public List<Car> readAll() {
         return dataBase.GET_ALL(FILE_URL, Car.class);
+    }
+
+    @Override
+    public List<Car> readAllBySalonId(UUID id) {
+        List<Car> carsList = readAll();
+        return carsList.stream()
+                .filter(car -> car.getAutoSalonID().equals(id))
+                .collect(Collectors.toList());
     }
 }

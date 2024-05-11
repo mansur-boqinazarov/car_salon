@@ -12,4 +12,5 @@ public class CallbackQueryHandler extends BaseHandle {
     public void handle(Update update) {
 
     }
+
 }

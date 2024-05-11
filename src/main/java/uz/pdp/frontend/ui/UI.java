@@ -1,6 +1,10 @@
 package uz.pdp.frontend.ui;
 
+import uz.pdp.backend.enums.cars.carmodel.CarModel;
+import uz.pdp.backend.enums.cars.colors.CarColor;
+import uz.pdp.backend.enums.cars.fuelroute.FuelRoute;
 import uz.pdp.backend.enums.roles.Role;
+import uz.pdp.backend.model.car.Car;
 import uz.pdp.backend.model.carsalon.CarSalon;
 import uz.pdp.backend.model.user.Passport;
 import uz.pdp.backend.model.user.User;
@@ -44,8 +48,12 @@ public class UI {
         String password = enterStr("Passwordingizni kiriting: ");
         try{
             user = userService.get().login(phoneNumber, password);
-            if(user != null){
+            if(user.getRole().equals(Role.SUPER_ADMIN)){
                 superAdminMenu();
+            }
+            assert user != null;
+            if (user.getRole().equals(Role.ADMIN)){
+                adminMenu();
             }
             else System.out.println("Bunday foydalanuvchi ro'yxatdan o'tmagan");
         }
@@ -97,7 +105,7 @@ public class UI {
     }
     private static void adminMenu(){
         utilAdminMenu();
-        switch (enterInt("Tanlang...")){
+        switch (enterInt("Tanlang: ")){
             case 1 -> myCarSalon();
             case 2 -> createNewCar();
             case 3 -> deleteCar();
@@ -106,19 +114,64 @@ public class UI {
         }
         adminMenu();
     }
-    private static void myCarSalon(){
+    private static List<CarSalon> myCarSalon(){
         List<CarSalon> carSalons = carSalonService.get().readAll();
         carSalon = carSalons.stream()
                 .filter(carSalon -> carSalon.getAdminID().equals(user.getId()))
                 .toList()
                 .get(0);
         System.out.println(carSalon);
+        return carSalons;
     }
-    private static void createNewCar(){
+    private static void createNewCar() {
+        List<CarSalon> list = autoSalons();
+        IntStream.range(0, list.size())
+                .forEach(i -> System.out.println((i + 1) + " - " + list.get(i)));
+        int choose = enterInt("Avtosalonni tanlang: ") - 1;
+        carSalon = list.get(choose);
 
+        String name = enterStr("Avto nomi: ");
+        double price = enterDouble("Narxi: ");
+        String urlPhoto = enterStr("Rasm URL: ");
+        String divigatel = enterStr("Divigatel: ");
+
+        carService.get().create(new Car(
+                carSalon.getId(),
+                CarModel.BMW,
+                name,
+                CarColor.BLUE,
+                new Date(),
+                price,
+                urlPhoto,
+                divigatel,
+                3,
+                FuelRoute.GASOLINE
+        ));
+
+        System.out.println("Yangi avto salon yaratildi!");
     }
+
+    private static List<CarSalon> autoSalons() {
+        return carSalonService.get().readAll();
+    }
+
+
     private static void deleteCar(){
+        List<CarSalon> salonList = autoSalons();
+        IntStream.range(0, salonList.size())
+                .forEach(i -> System.out.println((i + 1) + " - " + salonList.get(i).getName()));
 
+        int salonIndex = enterInt("O'chirilayotgan avtomobilning avtosalonini tanlang: ") - 1;
+        CarSalon selectedSalon = salonList.get(salonIndex);
+
+        List<Car> carList = carService.get().readAllBySalonId(selectedSalon.getId());
+        IntStream.range(0, carList.size())
+                .forEach(i -> System.out.println((i + 1) + " - " + carList.get(i).getName()));
+
+        int carIndex = enterInt("O'chirilayotgan avtomobilni tanlang: ") - 1;
+        Car selectedCar = carList.get(carIndex);
+        carService.get().delete(selectedCar.getId());
+        System.out.println("Avtomobil o'chirildi!");
     }
 
     private static void signUp() {
@@ -127,10 +180,9 @@ public class UI {
         String phoneNumber = getPhoneNumber();
         try {
             gmailService.get().registerMailService(gmailAddress);
-            String activitionCode = enterStr("Activition codeni kiriting: ");
-            while (! gmailService.get().checkVerificationCode(activitionCode)) {
-                activitionCode = enterStr("Xato kiritildi! Activition codeni kiriting: ");
-            }
+            int activationCode = enterInt("Activition codeni kiriting: ");
+            if (gmailService.get().checkVerificationCode(activationCode))
+                 enterStr("Xato kiritildi! Activition codeni kiriting: ");
             String firstName = enterStr("First Name: ");
             String lastName = enterStr("Last Name: ");
             String fatherName = enterStr("Father Name: ");

@@ -18,4 +18,9 @@ public class CarSalon extends BaseModel{
     private Date openTime;
     private Date closeTime;
     private String phoneNumber;
+
+    @Override
+    public String toString() {
+        return name ;
     }
+}

@@ -1,21 +1,20 @@
 package uz.pdp.backend.service.gmailservice;
 
 import lombok.SneakyThrows;
+import uz.pdp.backend.service.isvalid.IsValid;
 
 import javax.mail.*;
 
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.util.Objects;
 import java.util.Properties;
+import java.util.Random;
 import java.util.ResourceBundle;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class GmailServiceimp implements GmailService {
-
-    private String verificationCode;
-
-    /**bu joyda username va passwordni settings.propertiesdan oladi*/
+/**bu joyda username va passwordni settings.propertiesdan oladi*/
     private static final String USERNAME = ResourceBundle.getBundle("settings").getString("gmail.username");
     private static final String PASSWORD = ResourceBundle.getBundle("settings").getString("gmail.password");
 
@@ -29,14 +28,13 @@ public class GmailServiceimp implements GmailService {
     }
 
     private Message getMessage(String recipientEmail, Session session) throws MessagingException {
-        this.verificationCode = getVerificationCode();
         Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress(USERNAME));
-        message.setRecipients(
+            message.setFrom(new InternetAddress(USERNAME));
+                message.setRecipients(
                     Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
-        message.setSubject("Verification code");
-        message.setContent("<h2>Verification Code</h2>" +
-                "           <p>Your verification code is: <strong>" + this.verificationCode + "</strong></p>","text/html");
+                message.setSubject("Verification code");
+            message.setContent("<h2>Verification Code</h2>" +
+                "           <p>Your verification code is: <strong>" + getVerificationCode() + "</strong></p>","text/html");
         return message;
     }
 
@@ -61,13 +59,21 @@ public class GmailServiceimp implements GmailService {
  * bu verificationni tekshirib boolean qaytaradi
  */
     @Override
-    public boolean checkVerificationCode(String verificationCode) {
-        return Objects.equals(this.verificationCode, verificationCode);
+    public boolean checkVerificationCode(int verificationCode) {
+        return getVerificationCode() == verificationCode;
     }
 /**
  * verification codeni qaytaradi, bu faqat servicega tegishli
  */
-    private String getVerificationCode() {
-        return String.valueOf((int)(Math.random() * 9000) + 1000);
+    private int getVerificationCode() {
+        Random random = new Random();
+        return random.nextInt(9000) + 1000;
+    }
+
+    /**
+     * bu gmail sintaksis jihatdan to'g'ri yozilganmi yoki yo'qmi tekshiradi
+     */
+    public boolean isValidGmail(String gmail) {
+        return IsValid.isValidGmail(gmail);
     }
 }

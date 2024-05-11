@@ -4,5 +4,5 @@ import javax.mail.internet.AddressException;
 
 public interface GmailService {
     void registerMailService(String recipient) throws AddressException;
-    boolean checkVerificationCode(String verificationCode);
+    boolean checkVerificationCode(int verificationCode);
 }
