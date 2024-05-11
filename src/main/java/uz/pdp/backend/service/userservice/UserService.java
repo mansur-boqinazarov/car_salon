@@ -8,4 +8,5 @@ import uz.pdp.backend.service.baseservice.BaseService;
  * @since 08/May/2024 17/07/30
  */
 public interface UserService extends BaseService<User>{
+    User login(String phoneNumber, String password);
 }

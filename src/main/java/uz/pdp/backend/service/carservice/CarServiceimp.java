@@ -19,8 +19,8 @@ public class CarServiceimp implements CarService{
 
     private static DataBase<Car> dataBase = new DataBase<>();
 
-    private final String FILE_URL = ResourceBundle.getBundle("settings").getString("car.fileurl");
-    private final String FILE_NAME = ResourceBundle.getBundle("Settings").getString("car.filename");
+    private final String FILE_URL = ResourceBundle.getBundle("files").getString("car.fileurl");
+    private final String FILE_NAME = ResourceBundle.getBundle("files").getString("car.filename");
 
     /**
      * Avtomobil yaratish.

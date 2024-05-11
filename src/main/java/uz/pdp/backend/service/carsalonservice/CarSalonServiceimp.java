@@ -18,8 +18,8 @@ public class CarSalonServiceimp implements CarSalonService{
 
     private static DataBase<CarSalon> dataBase = new DataBase<>();
 
-    private final String FILE_URL = ResourceBundle.getBundle("settings").getString("carsalon.fileurl");
-    private final String FILE_NAME = ResourceBundle.getBundle("Settings").getString("carsalon.filename");
+    private final String FILE_URL = ResourceBundle.getBundle("files").getString("carsalon.fileurl");
+    private final String FILE_NAME = ResourceBundle.getBundle("files").getString("carsalon.filename");
 
     /**
      * Avtomobil salon yaratish.
