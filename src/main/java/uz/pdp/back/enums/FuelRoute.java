@@ -4,5 +4,6 @@ package uz.pdp.back.enums;
         GASOLINE, // Benzin
         DIESEL, // Dizel
         HYBRID, // Hibrid
-        ELECTRIC_CAR; // Elektr
+        ELECTRIC_CAR, // Elektr
+        PETROL // Petrol
     }

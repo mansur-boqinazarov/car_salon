@@ -29,12 +29,14 @@ public class CarNameController {
             System.out.println("2. "+FuelRoute.DIESEL);
             System.out.println("3. "+FuelRoute.HYBRID);
             System.out.println("4. "+FuelRoute.ELECTRIC_CAR);
+            System.out.println("5. "+FuelRoute.PETROL);
             FuelRoute fuelRoute = null;
              switch (enterInt("tanlang...")){
                 case 1 -> fuelRoute = FuelRoute.GASOLINE;
                 case 2 -> fuelRoute = FuelRoute.DIESEL;
                 case 3 -> fuelRoute = FuelRoute.HYBRID;
                 case 4 -> fuelRoute = FuelRoute.ELECTRIC_CAR;
+                case 5 -> fuelRoute = FuelRoute.PETROL;
                 default -> System.out.println("XATO");
             }
             carNameService.get().create(new CarName(modelID, name, color, fuelRoute));

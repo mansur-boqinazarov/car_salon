@@ -1,6 +1,14 @@
 package uz.pdp.back;
 
-import uz.pdp.back.runner.AdminCreateController;
+import uz.pdp.back.model.car.Car;
+import uz.pdp.back.model.carmodel.CarModel;
+import uz.pdp.back.model.carname.CarName;
+import uz.pdp.back.model.carsalon.CarSalon;
+import uz.pdp.back.runner.*;
+
+import java.awt.*;
+
+import static uz.pdp.back.config.Configuration.*;
 
 /**
  * @author To'lqin Ruzimbayev
@@ -8,8 +16,8 @@ import uz.pdp.back.runner.AdminCreateController;
  */
 public class Test {
     public static void main(String[] args) {
-        while (true) {
-            AdminCreateController.start();
-        }
+
+        System.out.println(carNameService.get().readAll().size());
+
     }
 }

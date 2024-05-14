@@ -51,7 +51,7 @@ public class CarModelServiceimp implements CarModelService {
 
     @Override
     public List<CarModel> readAll() {
-        Type type = new TypeToken<List<Car>>(){}.getType();
+        Type type = new TypeToken<List<CarModel>>(){}.getType();
         return database.getAll(type, fileURL);
     }
 }
