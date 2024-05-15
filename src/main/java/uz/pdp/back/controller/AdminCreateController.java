@@ -1,4 +1,4 @@
-package uz.pdp.back.runner;
+package uz.pdp.back.controller;
 
 import uz.pdp.back.enums.Role;
 import uz.pdp.back.model.passport.Passport;
@@ -9,7 +9,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static uz.pdp.back.config.Configuration.*;
-import static uz.pdp.back.utils.UtilMenu.*;
 import static uz.pdp.back.utils.Util.*;
 
 public class AdminCreateController {

@@ -1,4 +1,4 @@
-package uz.pdp.back.runner;
+package uz.pdp.back.controller;
 
 
 import uz.pdp.back.model.car.Car;

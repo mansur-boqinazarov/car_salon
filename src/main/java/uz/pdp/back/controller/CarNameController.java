@@ -1,7 +1,6 @@
-package uz.pdp.back.runner;
+package uz.pdp.back.controller;
 
 import uz.pdp.back.enums.FuelRoute;
-import uz.pdp.back.model.car.Car;
 import uz.pdp.back.model.carmodel.CarModel;
 import uz.pdp.back.model.carname.CarName;
 

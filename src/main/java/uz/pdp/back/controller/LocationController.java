@@ -1,4 +1,4 @@
-package uz.pdp.back.runner;
+package uz.pdp.back.controller;
 
 import uz.pdp.back.model.carsalon.CarSalon;
 import uz.pdp.back.model.location.Location;
@@ -16,9 +16,6 @@ import static uz.pdp.back.utils.Util.*;
  */
 public class LocationController {
     public static void start(){
-        System.out.println("1. Location yaratish");
-        System.out.println("2. Dasturni tugatish");
-        if(enterInt("Tanlang...") == 1){
             List<CarSalon> carSalons = carSalonService.get().readAll();
             IntStream.range(0, carSalons.size())
                     .forEach(i-> System.out.println((i+1) + " - " + carSalons.get(i)));
@@ -27,9 +24,5 @@ public class LocationController {
             double longitude = enterDouble("longitude: ");
             Location location = new Location(salonID, latitude, longitude);
             locationService.get().create(location);
-        }
-        else {
-            return;
-        }
     }
 }
