@@ -15,4 +15,11 @@ public class CarName extends BaseModel {
     private String modelName;
     private String color;
     private FuelRoute fuelRote;
+
+    @Override
+    public String toString() {
+        return
+                 modelID + " | " + modelName + " | " + color +" | " + fuelRote
+     ;
+    }
 }

@@ -1,7 +1,6 @@
 package uz.pdp.back.config;
 
 
-import uz.pdp.back.model.carmodel.CarModel;
 import uz.pdp.back.service.address.AddressService;
 import uz.pdp.back.service.address.AddressServiceimp;
 import uz.pdp.back.service.car.CarService;
