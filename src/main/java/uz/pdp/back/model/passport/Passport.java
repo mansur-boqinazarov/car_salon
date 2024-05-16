@@ -19,4 +19,9 @@ public class Passport extends BaseModel {
     private String gender;
     private String passportNumber;
     private String passportSeries;
+
+    @Override
+    public String forCallbackButton() {
+        return "";
+    }
 }

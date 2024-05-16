@@ -17,9 +17,7 @@ public class CarName extends BaseModel {
     private FuelRoute fuelRote;
 
     @Override
-    public String toString() {
-        return
-                 modelID + " | " + modelName + " | " + color +" | " + fuelRote
-     ;
+    public String forCallbackButton() {
+        return modelName;
     }
 }

@@ -7,7 +7,7 @@ import uz.pdp.back.model.user.User;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static uz.pdp.back.config.Configuration.*;
+import static uz.pdp.back.config.ThreadSafeBeansContainer.*;
 import static uz.pdp.back.utils.Util.enterInt;
 import static uz.pdp.back.utils.Util.enterStr;
 

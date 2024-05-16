@@ -17,4 +17,9 @@ public class Address extends BaseModel {
     private String district;
     private String street;
     private String apartmentNumber;
+
+    @Override
+    public String forCallbackButton() {
+        return "";
+    }
 }

@@ -11,4 +11,9 @@ import uz.pdp.back.model.basemodel.BaseModel;
 public class Order extends BaseModel {
     private String userID;
     private String carID;
+
+    @Override
+    public String forCallbackButton() {
+        return "";
+    }
 }

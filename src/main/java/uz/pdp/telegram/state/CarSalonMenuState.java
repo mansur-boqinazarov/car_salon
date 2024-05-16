@@ -5,6 +5,5 @@ package uz.pdp.telegram.state;
  */
 public enum CarSalonMenuState implements State{
     CAR_MODEL,
-    CAR_SALON_LOCATION,
     BACK
 }

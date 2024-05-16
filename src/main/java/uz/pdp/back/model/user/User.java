@@ -19,4 +19,9 @@ public class User extends BaseModel {
     private String password;
     private String passportID;
     private Role role;
+
+    @Override
+    public String forCallbackButton() {
+        return "";
+    }
 }

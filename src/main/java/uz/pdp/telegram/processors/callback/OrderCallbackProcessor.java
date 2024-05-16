@@ -1,5 +1,6 @@
 package uz.pdp.telegram.processors.callback;
 
+import com.pengrad.telegrambot.model.CallbackQuery;
 import com.pengrad.telegrambot.model.Update;
 import uz.pdp.telegram.processors.Processor;
 import uz.pdp.telegram.state.OrderState;
@@ -11,6 +12,11 @@ import uz.pdp.telegram.state.OrderState;
 public class OrderCallbackProcessor implements Processor<OrderState> {
     @Override
     public void process(Update update, OrderState state) {
+        CallbackQuery callbackQuery = update.callbackQuery();
+        if (state.equals(OrderState.GETTING_CONTRACT)){
 
+        }else if (state.equals(OrderState.CANCELLATION)){
+
+        }
     }
 }

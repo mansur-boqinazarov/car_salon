@@ -2,7 +2,7 @@ package uz.pdp.back.controller;
 
 import uz.pdp.back.model.picture.Picture;
 
-import static uz.pdp.back.config.Configuration.pictureService;
+import static uz.pdp.back.config.ThreadSafeBeansContainer.pictureService;
 import static uz.pdp.back.utils.Util.enterInt;
 import static uz.pdp.back.utils.Util.enterStr;
 

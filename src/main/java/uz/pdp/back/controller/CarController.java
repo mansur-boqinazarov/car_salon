@@ -10,7 +10,7 @@ import uz.pdp.back.model.picture.Picture;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static uz.pdp.back.config.Configuration.*;
+import static uz.pdp.back.config.ThreadSafeBeansContainer.*;
 import static uz.pdp.back.utils.Util.*;
 
 public class CarController {

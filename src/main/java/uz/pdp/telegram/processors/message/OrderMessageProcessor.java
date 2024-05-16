@@ -1,5 +1,6 @@
 package uz.pdp.telegram.processors.message;
 
+import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.Update;
 import uz.pdp.telegram.processors.Processor;
 import uz.pdp.telegram.state.OrderState;
@@ -11,6 +12,12 @@ import uz.pdp.telegram.state.OrderState;
 public class OrderMessageProcessor implements Processor<OrderState> {
     @Override
     public void process(Update update, OrderState state) {
+        Message message = update.message();
+        if(state.equals(OrderState.GETTING_CONTRACT)){
 
+        }
+        else if(state.equals(OrderState.CANCELLATION)){
+
+        }
     }
 }

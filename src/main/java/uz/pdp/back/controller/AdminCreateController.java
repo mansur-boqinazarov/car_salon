@@ -8,7 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static uz.pdp.back.config.Configuration.*;
+import static uz.pdp.back.config.ThreadSafeBeansContainer.*;
 import static uz.pdp.back.utils.Util.*;
 
 public class AdminCreateController {

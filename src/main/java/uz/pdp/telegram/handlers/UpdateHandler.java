@@ -13,16 +13,14 @@ import static uz.pdp.back.config.ThreadSafeBeansContainer.messageHandler;
  * @author Mansurbek Boqinazarov
  */
 public class UpdateHandler {
-    public void handle(List<Update> updates){
+    public void handle(Update update){
         CompletableFuture.runAsync(()->{
-            for (Update update : updates) {
                 executor.submit(()->{
                     if(Objects.nonNull(update.message()))
                         messageHandler.get().handle(update);
                     else if(Objects.nonNull(update.callbackQuery()))
                         callbackHandler.get().handle(update);
                 });
-            }
         });
     }
 }

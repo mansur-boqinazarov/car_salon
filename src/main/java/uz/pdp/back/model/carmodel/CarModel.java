@@ -10,4 +10,9 @@ import uz.pdp.back.model.basemodel.BaseModel;
 @Builder
 public class CarModel extends BaseModel{
     private String modelName;
+
+    @Override
+    public String forCallbackButton() {
+        return modelName;
+    }
 }

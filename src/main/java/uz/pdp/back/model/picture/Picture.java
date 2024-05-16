@@ -15,4 +15,9 @@ import uz.pdp.back.model.basemodel.BaseModel;
 public class Picture extends BaseModel {
     private String name;
     private String path;
+
+    @Override
+    public String forCallbackButton() {
+        return "";
+    }
 }

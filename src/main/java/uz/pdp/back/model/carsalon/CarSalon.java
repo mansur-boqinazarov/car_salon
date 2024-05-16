@@ -15,4 +15,8 @@ public class CarSalon extends BaseModel {
     private String carSalonName;
     private String phoneNumberCarSalon;
 
+    @Override
+    public String forCallbackButton() {
+        return carSalonName;
+    }
 }

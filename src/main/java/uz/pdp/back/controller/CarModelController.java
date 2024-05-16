@@ -2,7 +2,7 @@ package uz.pdp.back.controller;
 
 import uz.pdp.back.model.carmodel.CarModel;
 
-import static uz.pdp.back.config.Configuration.carModelService;
+import static uz.pdp.back.config.ThreadSafeBeansContainer.*;
 import static uz.pdp.back.utils.Util.enterInt;
 import static uz.pdp.back.utils.Util.enterStr;
 

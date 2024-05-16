@@ -14,4 +14,5 @@ public abstract class BaseModel {
     public BaseModel() {
         this.id = UUID.randomUUID().toString();
     }
+    public abstract String forCallbackButton();
 }

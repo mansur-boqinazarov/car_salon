@@ -13,4 +13,9 @@ public class Location extends BaseModel {
     private String salonID;
     private double latitude;
     private double longitude;
+
+    @Override
+    public String forCallbackButton() {
+        return "";
+    }
 }

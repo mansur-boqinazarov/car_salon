@@ -19,9 +19,12 @@ import uz.pdp.back.service.picture.PictureService;
 import uz.pdp.back.service.picture.PictureServiceimp;
 import uz.pdp.back.service.user.UserService;
 import uz.pdp.back.service.user.UserServiceimp;
+import uz.pdp.telegram.deletemessage.DeleterMessage;
 import uz.pdp.telegram.handlers.CallbackHandler;
 import uz.pdp.telegram.handlers.Handler;
 import uz.pdp.telegram.handlers.MessageHandler;
+import uz.pdp.telegram.handlers.UpdateHandler;
+import uz.pdp.telegram.model.TelegramUser;
 import uz.pdp.telegram.processors.callback.*;
 import uz.pdp.telegram.processors.message.*;
 import uz.pdp.telegram.state.State;
@@ -32,6 +35,7 @@ import java.util.concurrent.Executors;
 
 
 public class ThreadSafeBeansContainer {
+    public static final ThreadLocal<UpdateHandler> updateHandler = ThreadLocal.withInitial(UpdateHandler::new);
     public static final ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
     public static final ThreadLocal<UserService> userService = ThreadLocal.withInitial(UserServiceimp::new);
     public static final ThreadLocal<PassportService> passportService = ThreadLocal.withInitial(PassportServiceimp::new);
@@ -47,17 +51,20 @@ public class ThreadSafeBeansContainer {
     public static final ThreadLocal<Handler> messageHandler = ThreadLocal.withInitial(MessageHandler::new);
     public static final ThreadLocal<Handler> callbackHandler = ThreadLocal.withInitial(CallbackHandler::new);
 
-    public static final ThreadLocal<CarSalonMenuCallbackProcessor> carSalonMenuCallbackProcessor = ThreadLocal.withInitial(CarSalonMenuCallbackProcessor::new);
     public static final ThreadLocal<DefaultCallbackProcessor> defaultCallbackProcessor = ThreadLocal.withInitial(DefaultCallbackProcessor::new);
     public static final ThreadLocal<GenerateUserPassportCallbackProcessor> generateUserPassportCallbackProcessor = ThreadLocal.withInitial(GenerateUserPassportCallbackProcessor::new);
     public static final ThreadLocal<OrderCallbackProcessor> orderCallbackProcessor = ThreadLocal.withInitial(OrderCallbackProcessor::new);
     public static final ThreadLocal<SelectSalonMenuCallbackProcessor> selectSalonMenuCallbackProcessor = ThreadLocal.withInitial(SelectSalonMenuCallbackProcessor::new);
 
-    public static final ThreadLocal<CarSalonMenuMessageProcessor> carSalonMenuMessageProcessor = ThreadLocal.withInitial(CarSalonMenuMessageProcessor::new);
     public static final ThreadLocal<DefaultMessageProcessor> defaultMessageProcessor = ThreadLocal.withInitial(DefaultMessageProcessor::new);
     public static final ThreadLocal<GenerateUserPassportMessageProcessor> generateUserPassportMessageProcessor = ThreadLocal.withInitial(GenerateUserPassportMessageProcessor::new);
     public static final ThreadLocal<OrderMessageProcessor> orderMessageProcessor = ThreadLocal.withInitial(OrderMessageProcessor::new);
     public static final ThreadLocal<SelectSalonMenuMessageProcessor> selectSalonMenuMessageProcessor = ThreadLocal.withInitial(SelectSalonMenuMessageProcessor::new);
 
+
     public static final ConcurrentHashMap<Long, State> userState = new ConcurrentHashMap<>();
+
+    public static final ThreadLocal<TelegramUser> telegramUser = ThreadLocal.withInitial(TelegramUser::new);
+
+    public static ThreadLocal<String> uuid = ThreadLocal.withInitial(String::new);
 }

@@ -6,8 +6,8 @@ import uz.pdp.back.model.location.Location;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static uz.pdp.back.config.Configuration.carSalonService;
-import static uz.pdp.back.config.Configuration.locationService;
+import static uz.pdp.back.config.ThreadSafeBeansContainer.carSalonService;
+import static uz.pdp.back.config.ThreadSafeBeansContainer.locationService;
 import static uz.pdp.back.utils.Util.*;
 
 /**

@@ -2,7 +2,7 @@ package uz.pdp.back.controller;
 
 import uz.pdp.back.model.address.Address;
 
-import static uz.pdp.back.config.Configuration.addressService;
+import static uz.pdp.back.config.ThreadSafeBeansContainer.addressService;
 import static uz.pdp.back.utils.Util.enterStr;
 
 /**

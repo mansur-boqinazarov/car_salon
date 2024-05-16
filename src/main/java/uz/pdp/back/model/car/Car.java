@@ -14,4 +14,9 @@ public class Car extends BaseModel {
     private String pictureID;
     private double price;
     private int year;
+
+    @Override
+    public String forCallbackButton() {
+        return "";
+    }
 }
