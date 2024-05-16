@@ -5,3 +5,4 @@ package uz.pdp.telegram.state;
  * @since 16/May/2024 10/42/14
  */
 public interface State {}
+////////////////////////////////
