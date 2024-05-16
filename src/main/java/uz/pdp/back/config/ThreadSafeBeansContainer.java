@@ -63,8 +63,8 @@ public class ThreadSafeBeansContainer {
 
 
     public static final ConcurrentHashMap<Long, State> userState = new ConcurrentHashMap<>();
+    public static final ConcurrentHashMap<Long, String> salonUUID = new ConcurrentHashMap<>();
 
     public static final ThreadLocal<TelegramUser> telegramUser = ThreadLocal.withInitial(TelegramUser::new);
 
-    public static ThreadLocal<String> uuid = ThreadLocal.withInitial(String::new);
 }

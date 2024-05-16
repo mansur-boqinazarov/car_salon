@@ -13,6 +13,6 @@ public class CarModel extends BaseModel{
 
     @Override
     public String forCallbackButton() {
-        return modelName;
+        return this.modelName;
     }
 }

@@ -57,8 +57,9 @@ public class CarModelServiceimp implements CarModelService {
 
     @Override
     public List<CarModel> listBySalonID(String id) {
-        return readAll().stream()
-                .filter(salonID -> salonID.getId().equals(id))
+        Type type = new TypeToken<List<CarModel>>(){}.getType();
+        return database.getAll(type, fileURL).stream()
+                .filter(carModel -> carModel.getId().equals(id))
                 .toList();
     }
 }

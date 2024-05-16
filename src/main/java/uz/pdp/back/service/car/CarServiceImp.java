@@ -3,12 +3,15 @@ package uz.pdp.back.service.car;
 import com.google.gson.reflect.TypeToken;
 import uz.pdp.back.databases.Database;
 import uz.pdp.back.model.car.Car;
+import uz.pdp.back.model.carmodel.CarModel;
 
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static uz.pdp.back.config.ThreadSafeBeansContainer.carModelService;
+import static uz.pdp.back.config.ThreadSafeBeansContainer.carNameService;
 
 /**
  * @author To'lqin Ruzimbayev
@@ -53,7 +56,18 @@ public class CarServiceImp implements CarService{
         return database.getAll(type, fileURL);
     }
 
-    public static void main(String[] args) {
-        CarService carService = new CarServiceImp();
+    @Override
+    public List<Car> findCarById(String id) {
+        return readAll().stream()
+                .filter(car -> car.getSalonID().equals(id))
+                .toList();
+    }
+
+    @Override
+    public List<String> findModelIDByCarID(String id) {
+        List<Car> cars = findCarById(id);
+        Set<String> modelIDSet = new HashSet<>();
+        cars.forEach(car -> modelIDSet.add(carNameService.get().read(car.getCarNameID()).getModelID()));
+        return new ArrayList<>(modelIDSet);
     }
 }
