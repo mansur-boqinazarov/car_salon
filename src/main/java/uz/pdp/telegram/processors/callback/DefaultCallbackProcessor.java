@@ -1,13 +1,14 @@
-package uz.pdp.telegram.processors.message;
+package uz.pdp.telegram.processors.callback;
 
 import com.pengrad.telegrambot.model.Update;
 import uz.pdp.telegram.processors.Processor;
 import uz.pdp.telegram.state.DefaultState;
 
 /**
- * @author Mansurbek Boqinazarov
+ * @author To'lqin Ruzimbayev
+ * @since 16/May/2024 12/35/15
  */
-public class DefaultProcessor implements Processor<DefaultState> {
+public class DefaultCallbackProcessor implements Processor<DefaultState> {
     @Override
     public void process(Update update, DefaultState state) {
 

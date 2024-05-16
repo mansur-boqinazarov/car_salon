@@ -5,7 +5,9 @@ import com.pengrad.telegrambot.model.Update;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
-import static uz.pdp.back.config.Configuration.*;
+import static uz.pdp.back.config.ThreadSafeBeansContainer.*;
+import static uz.pdp.back.config.ThreadSafeBeansContainer.callbackHandler;
+import static uz.pdp.back.config.ThreadSafeBeansContainer.messageHandler;
 
 /**
  * @author Mansurbek Boqinazarov
@@ -15,13 +17,10 @@ public class UpdateHandler {
         CompletableFuture.runAsync(()->{
             for (Update update : updates) {
                 executor.submit(()->{
-
                     if(Objects.nonNull(update.message()))
                         messageHandler.get().handle(update);
-
                     else if(Objects.nonNull(update.callbackQuery()))
                         callbackHandler.get().handle(update);
-
                 });
             }
         });

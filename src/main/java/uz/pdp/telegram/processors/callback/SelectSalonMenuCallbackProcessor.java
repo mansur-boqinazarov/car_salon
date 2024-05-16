@@ -5,9 +5,10 @@ import uz.pdp.telegram.processors.Processor;
 import uz.pdp.telegram.state.SelectSalonMenuState;
 
 /**
- * @author Mansurbek Boqinazarov
+ * @author To'lqin Ruzimbayev
+ * @since 16/May/2024 12/37/41
  */
-public class SelectSalonMenuProcessor implements Processor<SelectSalonMenuState> {
+public class SelectSalonMenuCallbackProcessor implements Processor<SelectSalonMenuState> {
     @Override
     public void process(Update update, SelectSalonMenuState state) {
 

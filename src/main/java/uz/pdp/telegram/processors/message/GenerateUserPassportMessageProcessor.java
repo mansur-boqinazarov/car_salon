@@ -5,9 +5,10 @@ import uz.pdp.telegram.processors.Processor;
 import uz.pdp.telegram.state.GenerateUserPassportState;
 
 /**
- * @author Mansurbek Boqinazarov
+ * @author To'lqin Ruzimbayev
+ * @since 16/May/2024 12/36/18
  */
-public class GenerateUserPassportProcessor implements Processor<GenerateUserPassportState> {
+public class GenerateUserPassportMessageProcessor implements Processor<GenerateUserPassportState> {
     @Override
     public void process(Update update, GenerateUserPassportState state) {
 

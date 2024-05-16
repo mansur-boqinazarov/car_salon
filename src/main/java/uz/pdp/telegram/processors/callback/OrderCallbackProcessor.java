@@ -5,9 +5,10 @@ import uz.pdp.telegram.processors.Processor;
 import uz.pdp.telegram.state.OrderState;
 
 /**
- * @author Mansurbek Boqinazarov
+ * @author To'lqin Ruzimbayev
+ * @since 16/May/2024 12/37/22
  */
-public class OrderProcessor implements Processor<OrderState> {
+public class OrderCallbackProcessor implements Processor<OrderState> {
     @Override
     public void process(Update update, OrderState state) {
 
