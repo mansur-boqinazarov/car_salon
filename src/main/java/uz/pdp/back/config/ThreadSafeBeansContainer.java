@@ -19,14 +19,13 @@ import uz.pdp.back.service.picture.PictureService;
 import uz.pdp.back.service.picture.PictureServiceimp;
 import uz.pdp.back.service.user.UserService;
 import uz.pdp.back.service.user.UserServiceimp;
-import uz.pdp.telegram.deletemessage.DeleterMessage;
 import uz.pdp.telegram.handlers.CallbackHandler;
 import uz.pdp.telegram.handlers.Handler;
 import uz.pdp.telegram.handlers.MessageHandler;
 import uz.pdp.telegram.handlers.UpdateHandler;
 import uz.pdp.telegram.model.TelegramUser;
-import uz.pdp.telegram.processors.callback.*;
-import uz.pdp.telegram.processors.message.*;
+import uz.pdp.telegram.processors.user.callback.*;
+import uz.pdp.telegram.processors.user.message.*;
 import uz.pdp.telegram.state.State;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -64,6 +63,7 @@ public class ThreadSafeBeansContainer {
 
     public static final ConcurrentHashMap<Long, State> userState = new ConcurrentHashMap<>();
     public static final ConcurrentHashMap<Long, String> salonUUID = new ConcurrentHashMap<>();
+    public static final ConcurrentHashMap<Long, String> modelID = new ConcurrentHashMap<>();
 
     public static final ThreadLocal<TelegramUser> telegramUser = ThreadLocal.withInitial(TelegramUser::new);
 

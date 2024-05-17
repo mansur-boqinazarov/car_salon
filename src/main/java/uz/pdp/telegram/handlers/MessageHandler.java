@@ -26,7 +26,6 @@ public class MessageHandler implements Handler{
         Chat chat = message.chat();
         Long chatID = chat.id();
         State state = userState.get(chatID);
-        System.out.println(state);
         if(state == null){
             requestPhoneNumber(chatID);
         }

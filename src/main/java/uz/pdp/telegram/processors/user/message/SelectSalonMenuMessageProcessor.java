@@ -1,4 +1,4 @@
-package uz.pdp.telegram.processors.message;
+package uz.pdp.telegram.processors.user.message;
 
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.Message;
@@ -34,13 +34,14 @@ public class SelectSalonMenuMessageProcessor implements Processor<SelectSalonMen
 
         }
         else if(state.equals(SelectSalonMenuState.SELECT_CAR_MODEL)){
+/*
             List<String> list = carService.get().findModelIDByCarID(salonUUID.get(chatID));
             List<CarModel> carModelList = new ArrayList<>();
             list.forEach(carModelID -> carModelList.add(carModelService.get().read(carModelID)));
-            carModelList.forEach(System.out::println);
             SendMessage sendMessage = SendMessageFactory.sendMessage(chatID, "Modelni tanlang", InlineKeyboardMarkupFactory.listInlineButtons(carModelList));
             bot.execute(sendMessage);
             userState.put(chatID, SelectSalonMenuState.SELECT_CAR);
+*/
         }
         else if(state.equals(SelectSalonMenuState.CAR_ORDER)){
 
@@ -50,7 +51,12 @@ public class SelectSalonMenuMessageProcessor implements Processor<SelectSalonMen
         }
         else if(state.equals(SelectSalonMenuState.CHOOSE_CAR_SALON_MENU)){
             if(message.text().equals("Modellar")){
-                userState.put(chatID, SelectSalonMenuState.SELECT_CAR_MODEL);
+                List<String> list = carService.get().findModelIDByCarID(salonUUID.get(chatID));
+                List<CarModel> carModelList = new ArrayList<>();
+                list.forEach(carModelID -> carModelList.add(carModelService.get().read(carModelID)));
+                SendMessage sendMessage = SendMessageFactory.sendMessage(chatID, "Modelni tanlang", InlineKeyboardMarkupFactory.listInlineButtons(carModelList));
+                bot.execute(sendMessage);
+                userState.put(chatID, SelectSalonMenuState.SELECT_CAR);
             }
             else if(message.text().equals("Salon manzili")){
                 userState.put(chatID, SelectSalonMenuState.CAR_SALON_LOCATION);

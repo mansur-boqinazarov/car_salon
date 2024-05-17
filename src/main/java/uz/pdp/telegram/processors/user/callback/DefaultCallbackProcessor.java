@@ -1,4 +1,4 @@
-package uz.pdp.telegram.processors.callback;
+package uz.pdp.telegram.processors.user.callback;
 
 import com.pengrad.telegrambot.model.CallbackQuery;
 import com.pengrad.telegrambot.model.Update;

@@ -1,11 +1,10 @@
-package uz.pdp.telegram.processors.callback;
+package uz.pdp.telegram.processors.user.callback;
 
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.CallbackQuery;
 import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.model.message.MaybeInaccessibleMessage;
-import com.pengrad.telegrambot.model.request.Keyboard;
 import com.pengrad.telegrambot.request.SendMessage;
 import uz.pdp.back.config.TelegramBotConfiguration;
 import uz.pdp.back.model.car.Car;
@@ -37,11 +36,14 @@ public class SelectSalonMenuCallbackProcessor implements Processor<SelectSalonMe
             bot.execute(sendMessage);
             userState.put(chatID, SelectSalonMenuState.CHOOSE_CAR_SALON_MENU);
         }else if (state.equals(SelectSalonMenuState.SELECT_CAR)) {
+            modelID.put(chatID, callbackQuery.data());
             List<Car> carById = carService.get().findCarById(salonUUID.get(chatID));
-            carById.forEach(System.out::println);
             List<CarName> carNameList = new ArrayList<>();
             carById.forEach(carID -> carNameList.add(carNameService.get().read(carID.getCarNameID())));
-            SendMessage sendMessage = SendMessageFactory.sendMessage(chatID, "Masninani tanlang", InlineKeyboardMarkupFactory.listInlineButtons(carNameList));
+            List<CarName> list = carNameList.stream()
+                    .filter(carModelid -> carModelid.getModelID().equals(modelID.get(chatID)))
+                    .toList();
+            SendMessage sendMessage = SendMessageFactory.sendMessage(chatID, "Mashinani tanlang", InlineKeyboardMarkupFactory.listInlineButtons(list));
             bot.execute(sendMessage);
         }else if (state.equals(SelectSalonMenuState.SELECT_CAR_MODEL)) {
 

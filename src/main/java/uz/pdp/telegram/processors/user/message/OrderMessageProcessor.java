@@ -1,4 +1,4 @@
-package uz.pdp.telegram.processors.message;
+package uz.pdp.telegram.processors.user.message;
 
 import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.Update;

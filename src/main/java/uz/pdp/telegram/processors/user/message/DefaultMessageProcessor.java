@@ -1,4 +1,4 @@
-package uz.pdp.telegram.processors.message;
+package uz.pdp.telegram.processors.user.message;
 
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.Message;
@@ -22,7 +22,6 @@ public class DefaultMessageProcessor implements Processor<DefaultState> {
         String text = message.text();
         Long chatID = message.chat().id();
         if(state.equals(DefaultState.SEND_PHONE_NUMBER)){
-            System.out.println("Telefon nomer bo'limi");
             String phoneNumber = message.contact().phoneNumber();
             telegramUser.get().setPhoneNumber(phoneNumber);
             userState.put(chatID, DefaultState.BASE_USER_MENU);
