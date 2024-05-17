@@ -1,4 +1,4 @@
-package uz.pdp.telegram.util;
+package uz.pdp.telegram.util.keyboards;
 
 import com.pengrad.telegrambot.model.request.InlineKeyboardMarkup;
 import com.pengrad.telegrambot.model.request.Keyboard;

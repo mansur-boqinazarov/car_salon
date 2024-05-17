@@ -8,8 +8,8 @@ import com.pengrad.telegrambot.request.SendMessage;
 import lombok.NonNull;
 import uz.pdp.back.config.TelegramBotConfiguration;
 import uz.pdp.telegram.state.*;
-import uz.pdp.telegram.util.ReplyKeyboardMarkupFactory;
-import uz.pdp.telegram.util.SendMessageFactory;
+import uz.pdp.telegram.util.keyboards.ReplyKeyboardMarkupFactory;
+import uz.pdp.telegram.util.keyboards.SendMessageFactory;
 
 import static uz.pdp.back.config.ThreadSafeBeansContainer.*;
 

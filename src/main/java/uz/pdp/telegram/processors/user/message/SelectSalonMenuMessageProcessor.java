@@ -9,8 +9,8 @@ import uz.pdp.back.config.TelegramBotConfiguration;
 import uz.pdp.back.model.carmodel.CarModel;
 import uz.pdp.telegram.processors.Processor;
 import uz.pdp.telegram.state.SelectSalonMenuState;
-import uz.pdp.telegram.util.InlineKeyboardMarkupFactory;
-import uz.pdp.telegram.util.SendMessageFactory;
+import uz.pdp.telegram.util.keyboards.InlineKeyboardMarkupFactory;
+import uz.pdp.telegram.util.keyboards.SendMessageFactory;
 
 import java.util.ArrayList;
 import java.util.List;

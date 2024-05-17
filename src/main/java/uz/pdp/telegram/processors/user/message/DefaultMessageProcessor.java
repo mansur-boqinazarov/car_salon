@@ -8,9 +8,9 @@ import uz.pdp.back.config.TelegramBotConfiguration;
 import uz.pdp.telegram.processors.Processor;
 import uz.pdp.telegram.state.DefaultState;
 import uz.pdp.telegram.state.SelectSalonMenuState;
-import uz.pdp.telegram.util.InlineKeyboardMarkupFactory;
-import uz.pdp.telegram.util.ReplyKeyboardMarkupFactory;
-import uz.pdp.telegram.util.SendMessageFactory;
+import uz.pdp.telegram.util.keyboards.InlineKeyboardMarkupFactory;
+import uz.pdp.telegram.util.keyboards.ReplyKeyboardMarkupFactory;
+import uz.pdp.telegram.util.keyboards.SendMessageFactory;
 
 import static uz.pdp.back.config.ThreadSafeBeansContainer.*;
 

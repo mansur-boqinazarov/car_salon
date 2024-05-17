@@ -11,9 +11,9 @@ import uz.pdp.back.model.car.Car;
 import uz.pdp.back.model.carname.CarName;
 import uz.pdp.telegram.processors.Processor;
 import uz.pdp.telegram.state.SelectSalonMenuState;
-import uz.pdp.telegram.util.InlineKeyboardMarkupFactory;
-import uz.pdp.telegram.util.ReplyKeyboardMarkupFactory;
-import uz.pdp.telegram.util.SendMessageFactory;
+import uz.pdp.telegram.util.keyboards.InlineKeyboardMarkupFactory;
+import uz.pdp.telegram.util.keyboards.ReplyKeyboardMarkupFactory;
+import uz.pdp.telegram.util.keyboards.SendMessageFactory;
 
 import java.util.ArrayList;
 import java.util.List;
