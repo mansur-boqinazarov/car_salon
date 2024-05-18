@@ -1,6 +1,8 @@
-package uz.pdp.telegram.state;
+package uz.pdp.telegram.state.user;
 
-public enum GenerateUserPassportState implements State{
+import uz.pdp.telegram.state.State;
+
+public enum GenerateUserPassportState implements State {
     FIRST_NAME,
     LAST_NAME,
     FATHERS_NAME,

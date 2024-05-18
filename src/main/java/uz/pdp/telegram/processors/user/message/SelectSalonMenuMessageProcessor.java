@@ -8,9 +8,9 @@ import com.pengrad.telegrambot.request.SendMessage;
 import uz.pdp.back.config.TelegramBotConfiguration;
 import uz.pdp.back.model.carmodel.CarModel;
 import uz.pdp.telegram.processors.Processor;
-import uz.pdp.telegram.state.SelectSalonMenuState;
-import uz.pdp.telegram.util.keyboards.InlineKeyboardMarkupFactory;
-import uz.pdp.telegram.util.keyboards.SendMessageFactory;
+import uz.pdp.telegram.state.user.SelectSalonMenuState;
+import uz.pdp.telegram.util.keyboards.user.InlineKeyboardMarkupFactory;
+import uz.pdp.telegram.util.keyboards.user.SendMessageFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +59,7 @@ public class SelectSalonMenuMessageProcessor implements Processor<SelectSalonMen
                 userState.put(chatID, SelectSalonMenuState.SELECT_CAR);
             }
             else if(message.text().equals("Salon manzili")){
+
                 userState.put(chatID, SelectSalonMenuState.CAR_SALON_LOCATION);
             }
             else{

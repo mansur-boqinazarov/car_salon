@@ -1,17 +1,22 @@
-package uz.pdp.telegram.handlers;
+package uz.pdp.telegram.handlers.user;
 
 import com.pengrad.telegrambot.model.CallbackQuery;
 import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.model.message.MaybeInaccessibleMessage;
+import uz.pdp.telegram.handlers.Handler;
 import uz.pdp.telegram.state.*;
+import uz.pdp.telegram.state.user.DefaultState;
+import uz.pdp.telegram.state.user.GenerateUserPassportState;
+import uz.pdp.telegram.state.user.OrderState;
+import uz.pdp.telegram.state.user.SelectSalonMenuState;
 
 import static uz.pdp.back.config.ThreadSafeBeansContainer.*;
 
 /**
  * @author Mansurbek Boqinazarov
  */
-public class CallbackHandler implements Handler{
+public class CallbackHandler implements Handler {
     @Override
     public void handle(Update update) {
         CallbackQuery callbackQuery = update.callbackQuery();

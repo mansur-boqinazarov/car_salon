@@ -6,11 +6,12 @@ import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.request.SendMessage;
 import uz.pdp.back.config.TelegramBotConfiguration;
 import uz.pdp.telegram.processors.Processor;
-import uz.pdp.telegram.state.DefaultState;
-import uz.pdp.telegram.state.SelectSalonMenuState;
-import uz.pdp.telegram.util.keyboards.InlineKeyboardMarkupFactory;
-import uz.pdp.telegram.util.keyboards.ReplyKeyboardMarkupFactory;
-import uz.pdp.telegram.util.keyboards.SendMessageFactory;
+import uz.pdp.telegram.state.admin.DeleteCarState;
+import uz.pdp.telegram.state.user.DefaultState;
+import uz.pdp.telegram.state.user.SelectSalonMenuState;
+import uz.pdp.telegram.util.keyboards.user.InlineKeyboardMarkupFactory;
+import uz.pdp.telegram.util.keyboards.user.ReplyKeyboardMarkupFactory;
+import uz.pdp.telegram.util.keyboards.user.SendMessageFactory;
 
 import static uz.pdp.back.config.ThreadSafeBeansContainer.*;
 
@@ -36,7 +37,7 @@ public class DefaultMessageProcessor implements Processor<DefaultState> {
         else if(state.equals(DefaultState.BASE_USER_MENU)){
             SendMessage sendMessage = SendMessageFactory.sendMessage(chatID, "Avto salonlardan birini tanlang", InlineKeyboardMarkupFactory.listInlineButtons(carSalonService.get().readAll()));
             bot.execute(sendMessage);
-            userState.put(chatID, SelectSalonMenuState.SELECT_CAR_SALON);
+            userState.put(chatID, SelectSalonMenuState.CHOOSE_CAR_SALON_MENU);
         }
     }
 }

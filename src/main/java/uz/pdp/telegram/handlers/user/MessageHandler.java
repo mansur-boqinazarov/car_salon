@@ -1,4 +1,4 @@
-package uz.pdp.telegram.handlers;
+package uz.pdp.telegram.handlers.user;
 
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.Chat;
@@ -7,16 +7,21 @@ import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.request.SendMessage;
 import lombok.NonNull;
 import uz.pdp.back.config.TelegramBotConfiguration;
+import uz.pdp.telegram.handlers.Handler;
 import uz.pdp.telegram.state.*;
-import uz.pdp.telegram.util.keyboards.ReplyKeyboardMarkupFactory;
-import uz.pdp.telegram.util.keyboards.SendMessageFactory;
+import uz.pdp.telegram.state.user.DefaultState;
+import uz.pdp.telegram.state.user.GenerateUserPassportState;
+import uz.pdp.telegram.state.user.OrderState;
+import uz.pdp.telegram.state.user.SelectSalonMenuState;
+import uz.pdp.telegram.util.keyboards.user.ReplyKeyboardMarkupFactory;
+import uz.pdp.telegram.util.keyboards.user.SendMessageFactory;
 
 import static uz.pdp.back.config.ThreadSafeBeansContainer.*;
 
 /**
  * @author Mansurbek Boqinazarov
  */
-public class MessageHandler implements Handler{
+public class MessageHandler implements Handler {
 
     private final TelegramBot bot = TelegramBotConfiguration.get();
 

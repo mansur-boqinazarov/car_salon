@@ -1,9 +1,9 @@
 package uz.pdp.telegram.util.json;
 
 import com.google.gson.InstanceCreator;
-import uz.pdp.telegram.state.CarSalonMenuState;
-import uz.pdp.telegram.state.DefaultState;
-import uz.pdp.telegram.state.GenerateUserPassportState;
+import uz.pdp.telegram.state.user.CarSalonMenuState;
+import uz.pdp.telegram.state.user.DefaultState;
+import uz.pdp.telegram.state.user.GenerateUserPassportState;
 import uz.pdp.telegram.state.State;
 
 import java.lang.reflect.Type;

@@ -10,10 +10,10 @@ import uz.pdp.back.config.TelegramBotConfiguration;
 import uz.pdp.back.model.car.Car;
 import uz.pdp.back.model.carname.CarName;
 import uz.pdp.telegram.processors.Processor;
-import uz.pdp.telegram.state.SelectSalonMenuState;
-import uz.pdp.telegram.util.keyboards.InlineKeyboardMarkupFactory;
-import uz.pdp.telegram.util.keyboards.ReplyKeyboardMarkupFactory;
-import uz.pdp.telegram.util.keyboards.SendMessageFactory;
+import uz.pdp.telegram.state.user.SelectSalonMenuState;
+import uz.pdp.telegram.util.keyboards.user.InlineKeyboardMarkupFactory;
+import uz.pdp.telegram.util.keyboards.user.ReplyKeyboardMarkupFactory;
+import uz.pdp.telegram.util.keyboards.user.SendMessageFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +35,7 @@ public class SelectSalonMenuCallbackProcessor implements Processor<SelectSalonMe
             SendMessage sendMessage = SendMessageFactory.sendMessage(chatID, "Menuni tanlang...", ReplyKeyboardMarkupFactory.autoSalonMenu());
             bot.execute(sendMessage);
             userState.put(chatID, SelectSalonMenuState.CHOOSE_CAR_SALON_MENU);
+
         }else if (state.equals(SelectSalonMenuState.SELECT_CAR)) {
             modelID.put(chatID, callbackQuery.data());
             List<Car> carById = carService.get().findCarById(salonUUID.get(chatID));
@@ -45,7 +46,8 @@ public class SelectSalonMenuCallbackProcessor implements Processor<SelectSalonMe
                     .toList();
             SendMessage sendMessage = SendMessageFactory.sendMessage(chatID, "Mashinani tanlang", InlineKeyboardMarkupFactory.listInlineButtons(list));
             bot.execute(sendMessage);
-        }else if (state.equals(SelectSalonMenuState.SELECT_CAR_MODEL)) {
+        }
+        else if (state.equals(SelectSalonMenuState.SELECT_CAR_MODEL)) {
 
         }else if (state.equals(SelectSalonMenuState.CAR_ORDER)) {
 

@@ -3,7 +3,7 @@ package uz.pdp.telegram.processors.user.message;
 import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.Update;
 import uz.pdp.telegram.processors.Processor;
-import uz.pdp.telegram.state.GenerateUserPassportState;
+import uz.pdp.telegram.state.user.GenerateUserPassportState;
 
 /**
  * @author To'lqin Ruzimbayev

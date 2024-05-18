@@ -62,4 +62,11 @@ public class CarModelServiceimp implements CarModelService {
                 .filter(carModel -> carModel.getId().equals(id))
                 .toList();
     }
+
+    @Override
+    public List<CarModel> findModelByCarID(String carSalonID) {
+        return readAll().stream()
+               .filter(model -> model.getId().equals(carSalonID))
+               .toList();
+    }
 }

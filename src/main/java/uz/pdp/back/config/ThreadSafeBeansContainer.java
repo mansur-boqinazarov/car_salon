@@ -19,11 +19,16 @@ import uz.pdp.back.service.picture.PictureService;
 import uz.pdp.back.service.picture.PictureServiceimp;
 import uz.pdp.back.service.user.UserService;
 import uz.pdp.back.service.user.UserServiceimp;
-import uz.pdp.telegram.handlers.CallbackHandler;
-import uz.pdp.telegram.handlers.Handler;
-import uz.pdp.telegram.handlers.MessageHandler;
-import uz.pdp.telegram.handlers.UpdateHandler;
+import uz.pdp.telegram.handlers.*;
+import uz.pdp.telegram.handlers.admin.AdminCallBackHandler;
+import uz.pdp.telegram.handlers.admin.AdminMessageHandler;
+import uz.pdp.telegram.handlers.user.CallbackHandler;
+import uz.pdp.telegram.handlers.user.MessageHandler;
 import uz.pdp.telegram.model.TelegramUser;
+import uz.pdp.telegram.processors.admin.callback.DeleteCarCallbackProcessor;
+import uz.pdp.telegram.processors.admin.message.AdminCarDeleteProcessor;
+import uz.pdp.telegram.processors.admin.message.AdminDefaultProcessor;
+import uz.pdp.telegram.processors.admin.message.AdminMessageProcessor;
 import uz.pdp.telegram.processors.user.callback.*;
 import uz.pdp.telegram.processors.user.message.*;
 import uz.pdp.telegram.state.State;
@@ -49,6 +54,8 @@ public class ThreadSafeBeansContainer {
     // handler
     public static final ThreadLocal<Handler> messageHandler = ThreadLocal.withInitial(MessageHandler::new);
     public static final ThreadLocal<Handler> callbackHandler = ThreadLocal.withInitial(CallbackHandler::new);
+    public static final ThreadLocal<Handler> adminMessageHandler = ThreadLocal.withInitial(AdminMessageHandler::new);
+    public static final ThreadLocal<Handler> adminCallbackHandler = ThreadLocal.withInitial(AdminCallBackHandler::new);
 
     public static final ThreadLocal<DefaultCallbackProcessor> defaultCallbackProcessor = ThreadLocal.withInitial(DefaultCallbackProcessor::new);
     public static final ThreadLocal<GenerateUserPassportCallbackProcessor> generateUserPassportCallbackProcessor = ThreadLocal.withInitial(GenerateUserPassportCallbackProcessor::new);
@@ -61,7 +68,13 @@ public class ThreadSafeBeansContainer {
     public static final ThreadLocal<SelectSalonMenuMessageProcessor> selectSalonMenuMessageProcessor = ThreadLocal.withInitial(SelectSalonMenuMessageProcessor::new);
 
 
+    //admin
+    public static final ThreadLocal<AdminDefaultProcessor> adminDefaultMessageProcessor = ThreadLocal.withInitial(AdminDefaultProcessor::new);
+    public static final ThreadLocal<AdminMessageProcessor> adminMessageProcessor = ThreadLocal.withInitial(AdminMessageProcessor::new);
+    public static final ThreadLocal<AdminCarDeleteProcessor> adminDeleteCarProcessor = ThreadLocal.withInitial(AdminCarDeleteProcessor::new);
+    public static final ThreadLocal<DeleteCarCallbackProcessor> deleteCallbackProcessor = ThreadLocal.withInitial(DeleteCarCallbackProcessor::new);
     public static final ConcurrentHashMap<Long, State> userState = new ConcurrentHashMap<>();
+    public static final ConcurrentHashMap<Long, State> adminState = new ConcurrentHashMap<>();
     public static final ConcurrentHashMap<Long, String> salonUUID = new ConcurrentHashMap<>();
     public static final ConcurrentHashMap<Long, String> modelID = new ConcurrentHashMap<>();
 

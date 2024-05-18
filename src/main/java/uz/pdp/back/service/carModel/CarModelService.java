@@ -11,4 +11,7 @@ import java.util.List;
  */
 public interface CarModelService extends BaseService<CarModel> {
      List<CarModel> listBySalonID(String id);
+
+
+    List<CarModel> findModelByCarID(String carSalonID);
 }

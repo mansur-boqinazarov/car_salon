@@ -3,7 +3,7 @@ package uz.pdp.telegram.processors.user.message;
 import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.Update;
 import uz.pdp.telegram.processors.Processor;
-import uz.pdp.telegram.state.OrderState;
+import uz.pdp.telegram.state.user.OrderState;
 
 /**
  * @author To'lqin Ruzimbayev
