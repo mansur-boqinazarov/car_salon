@@ -2,10 +2,8 @@ package uz.pdp.back.service.pictureId;
 
 import com.google.gson.reflect.TypeToken;
 import uz.pdp.back.databases.Database;
-import uz.pdp.back.model.order.Order;
-import uz.pdp.back.model.picture.Picture;
 import uz.pdp.back.service.base.BaseService;
-import uz.pdp.telegram.model.TelegramPictureID;
+import uz.pdp.telegram.model.picture.TelegramPictureID;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

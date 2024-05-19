@@ -5,7 +5,7 @@ import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.model.message.MaybeInaccessibleMessage;
 import uz.pdp.telegram.handlers.Handler;
-import uz.pdp.telegram.state.State;
+import uz.pdp.telegram.state.user.State;
 import uz.pdp.telegram.state.admin.DeleteCarState;
 
 import static uz.pdp.back.config.ThreadSafeBeansContainer.*;

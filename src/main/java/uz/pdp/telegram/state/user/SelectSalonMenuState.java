@@ -1,7 +1,5 @@
 package uz.pdp.telegram.state.user;
 
-import uz.pdp.telegram.state.State;
-
 /**
  * @author Mansurbek Boqinazarov
  */
@@ -12,5 +10,5 @@ public enum SelectSalonMenuState implements State {
     SELECT_CAR_MODEL,
     SELECT_CAR,
     CAR_ORDER,
-    BACK;
+    MENU_BUTTON;
 }

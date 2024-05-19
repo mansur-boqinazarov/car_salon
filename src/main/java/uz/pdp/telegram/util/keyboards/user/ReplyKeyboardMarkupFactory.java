@@ -25,4 +25,8 @@ public class ReplyKeyboardMarkupFactory extends Keyboard{
         KeyboardButton[][] buttons ={{b1},{b2},{b3}};
         return new ReplyKeyboardMarkup(buttons).resizeKeyboard(true).oneTimeKeyboard(true);
     }
+    public static Keyboard backButton(){
+        KeyboardButton button = new KeyboardButton("Back");
+        return new ReplyKeyboardMarkup(button).resizeKeyboard(true).oneTimeKeyboard(true);
+    }
 }

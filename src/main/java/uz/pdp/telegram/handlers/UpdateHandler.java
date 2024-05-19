@@ -17,19 +17,20 @@ public class UpdateHandler {
     public void handle(Update update) {
         CompletableFuture.runAsync(() -> {
             executor.submit(() -> {
-                Long chatID = update.message().chat().id();
+//                Long chatID = update.message().chat().id();
+/*
                 if (Objects.equals(chatID,5127045086L) && Objects.nonNull(update.message()))
                     adminMessageHandler.get().handle(update);
 
                 else if (Objects.equals(chatID, 5127045086L) && Objects.nonNull(update.callbackQuery()))
                     adminCallbackHandler.get().handle(update);
 
-                else if (Objects.nonNull(update.message()))
+*/
+                if (Objects.nonNull(update.message()))
                     messageHandler.get().handle(update);
 
                 else if (Objects.nonNull(update.callbackQuery()))
                     callbackHandler.get().handle(update);
-
             });
         });
     }

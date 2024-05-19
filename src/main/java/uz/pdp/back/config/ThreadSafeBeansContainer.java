@@ -1,6 +1,7 @@
 package uz.pdp.back.config;
 
 
+import uz.pdp.back.model.passport.Passport;
 import uz.pdp.back.service.address.AddressService;
 import uz.pdp.back.service.address.AddressServiceimp;
 import uz.pdp.back.service.car.CarService;
@@ -24,14 +25,16 @@ import uz.pdp.telegram.handlers.admin.AdminCallBackHandler;
 import uz.pdp.telegram.handlers.admin.AdminMessageHandler;
 import uz.pdp.telegram.handlers.user.CallbackHandler;
 import uz.pdp.telegram.handlers.user.MessageHandler;
-import uz.pdp.telegram.model.TelegramUser;
+import uz.pdp.telegram.model.user.TelegramUser;
 import uz.pdp.telegram.processors.admin.callback.DeleteCarCallbackProcessor;
 import uz.pdp.telegram.processors.admin.message.AdminCarDeleteProcessor;
 import uz.pdp.telegram.processors.admin.message.AdminDefaultProcessor;
 import uz.pdp.telegram.processors.admin.message.AdminMessageProcessor;
 import uz.pdp.telegram.processors.user.callback.*;
 import uz.pdp.telegram.processors.user.message.*;
-import uz.pdp.telegram.state.State;
+import uz.pdp.telegram.service.user.TelegramUserService;
+import uz.pdp.telegram.service.user.TelegramUserServiceimp;
+import uz.pdp.telegram.state.user.State;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
@@ -80,4 +83,6 @@ public class ThreadSafeBeansContainer {
 
     public static final ThreadLocal<TelegramUser> telegramUser = ThreadLocal.withInitial(TelegramUser::new);
 
+    public static final ThreadLocal<TelegramUserService> telegramUserService = ThreadLocal.withInitial(TelegramUserServiceimp::new);
+    public static final ConcurrentHashMap<Long, Passport> passportMap = new ConcurrentHashMap<>();
 }

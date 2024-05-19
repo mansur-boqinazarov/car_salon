@@ -1,4 +1,4 @@
-package uz.pdp.telegram.model;
+package uz.pdp.telegram.model.picture;
 
 import uz.pdp.back.model.basemodel.BaseModel;
 

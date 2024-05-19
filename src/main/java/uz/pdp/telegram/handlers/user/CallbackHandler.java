@@ -5,11 +5,7 @@ import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.model.message.MaybeInaccessibleMessage;
 import uz.pdp.telegram.handlers.Handler;
-import uz.pdp.telegram.state.*;
-import uz.pdp.telegram.state.user.DefaultState;
-import uz.pdp.telegram.state.user.GenerateUserPassportState;
-import uz.pdp.telegram.state.user.OrderState;
-import uz.pdp.telegram.state.user.SelectSalonMenuState;
+import uz.pdp.telegram.state.user.*;
 
 import static uz.pdp.back.config.ThreadSafeBeansContainer.*;
 
@@ -23,8 +19,7 @@ public class CallbackHandler implements Handler {
         MaybeInaccessibleMessage maybeInaccessibleMessage = callbackQuery.maybeInaccessibleMessage();
         Message message = (Message) maybeInaccessibleMessage;
         Long chatID = message.chat().id();
-        State state = userState.get(chatID);
-        System.out.println(state);
+        State state = telegramUserService.get().getUserState(chatID);
         if(state instanceof DefaultState defaultState){
             defaultCallbackProcessor.get().process(update, defaultState);
         }

@@ -1,7 +1,7 @@
 package uz.pdp.telegram.processors;
 
 import com.pengrad.telegrambot.model.Update;
-import uz.pdp.telegram.state.State;
+import uz.pdp.telegram.state.user.State;
 
 /**
  * @author Mansurbek Boqinazarov
