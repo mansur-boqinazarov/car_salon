@@ -1,9 +1,9 @@
 [
   {
     "chatID": 1853245827,
-    "phoneNumber": "998977152600",
+    "phoneNumber": "+998977152600",
     "firstName": "To\u0027lik O\u0027tkirovich",
-    "state": "GenerateUserPassportState.GENERATE_PASSPORT",
-    "chooseCarSalonID": "96984b03-077c-4a7e-94da-52cd8a0a3785"
+    "state": "OrderState.GETTING_CONTRACT",
+    "chooseCarSalonID": "e5fb9009-febd-4aed-a0dc-ff2ef0e6f2a9"
   }
 ]

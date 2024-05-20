@@ -3,11 +3,13 @@ package uz.pdp.telegram.processors.user.message;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.Update;
+import com.pengrad.telegrambot.request.SendMessage;
 import uz.pdp.back.config.TelegramBotConfiguration;
 import uz.pdp.back.model.passport.Passport;
 import uz.pdp.telegram.processors.Processor;
 import uz.pdp.telegram.state.user.GenerateUserPassportState;
 import uz.pdp.telegram.state.user.OrderState;
+import uz.pdp.telegram.util.keyboards.user.InlineKeyboardMarkupFactory;
 import uz.pdp.telegram.util.keyboards.user.SendMessageFactory;
 
 import java.util.Date;
@@ -32,6 +34,9 @@ public class GenerateUserPassportMessageProcessor implements Processor<GenerateU
                     telegramUserService.get().addPassport(chatID, passport.getId());
                 }
             }
+            telegramUserService.get().setUserState(chatID, OrderState.ORDER_OR_NOT_ORDER);
+            SendMessage sendMessage = SendMessageFactory.sendMessage(chatID, "", InlineKeyboardMarkupFactory.orderButton());
+            bot.execute(sendMessage);
         }else if (state.equals(GenerateUserPassportState.FIRST_NAME)){
             passportMap.get(chatID).setFirstName(message.text());
             telegramUserService.get().setUserState(chatID, GenerateUserPassportState.LAST_NAME);
@@ -58,8 +63,8 @@ public class GenerateUserPassportMessageProcessor implements Processor<GenerateU
             bot.execute(SendMessageFactory.sendMessage(chatID, "Passport seriyasini kiriting: "));
         }else if(state.equals(GenerateUserPassportState.PASSPORT_SERIES)){
             passportMap.get(chatID).setPassportSeries(message.text());
-            telegramUserService.get().setUserState(chatID, GenerateUserPassportState.GENERATE_PASSPORT);
-            bot.execute(SendMessageFactory.sendMessage(chatID, "Passport ma`lumotlarini qo'shish"));
+            telegramUserService.get().setUserState(chatID, OrderState.ORDER_OR_NOT_ORDER);
+            bot.execute(SendMessageFactory.sendMessage(chatID, "Passport ma`lumotlarini qo'shish", InlineKeyboardMarkupFactory.orderButton()));
         }
     }
 }

@@ -5,6 +5,7 @@ import com.pengrad.telegrambot.model.CallbackQuery;
 import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.model.message.MaybeInaccessibleMessage;
+import com.pengrad.telegrambot.request.SendDocument;
 import com.pengrad.telegrambot.request.SendMessage;
 import com.pengrad.telegrambot.request.SendPhoto;
 import uz.pdp.back.config.TelegramBotConfiguration;
@@ -12,6 +13,7 @@ import uz.pdp.back.model.car.Car;
 import uz.pdp.back.model.passport.Passport;
 import uz.pdp.back.service.car.CarService;
 import uz.pdp.telegram.processors.Processor;
+import uz.pdp.telegram.service.Shartnoma;
 import uz.pdp.telegram.state.user.GenerateUserPassportState;
 import uz.pdp.telegram.state.user.OrderState;
 import uz.pdp.telegram.state.user.SelectSalonMenuState;
@@ -62,12 +64,38 @@ public class OrderCallbackProcessor implements Processor<OrderState> {
                 bot.execute(sendMessage);
             }
             else if(callbackQuery.data().equals("shartnoma")){
-                if(telegramUserService.get().getPassport(chatID) == null){
-                    passportMap.put(chatID, new Passport());
-                    telegramUserService.get().setUserState(chatID, GenerateUserPassportState.FIRST_NAME);
-                    bot.execute(SendMessageFactory.sendMessage(chatID, "Ismingizni kiriting: "));
-                }
-                else{
+                try{
+                    Passport passport1 = passportMap.get(chatID);
+                    passportService.get().create(passport1);
+                            telegramUserService.get().addPassport(chatID, passport1.getId());
+                }catch (Exception e){}
+                finally {
+                    if(telegramUserService.get().getPassport(chatID) == null){
+                        passportMap.put(chatID, new Passport());
+                        telegramUserService.get().setUserState(chatID, GenerateUserPassportState.FIRST_NAME);
+                        bot.execute(SendMessageFactory.sendMessage(chatID, "Ismingizni kiriting: "));
+                    }
+                    else{
+                        String carSalonID = telegramUserService.get().getChooseCarSalon(chatID);
+                        String carSalonName = carSalonService.get().read(carSalonID).getCarSalonName();
+                        String addressID = carSalonService.get().read(carSalonID).getAddressID();
+                        String address = addressService.get().read(addressID).toString();
+                        String phoneNumberCarSalon = carSalonService.get().read(carSalonID).getPhoneNumberCarSalon();
+                        String passportID = telegramUserService.get().getPassport(chatID);
+                        Passport passport = passportService.get().read(passportID);
+                        String firstName = passport.getFirstName();
+                        String lastName = passport.getLastName();
+                        String fatherName = passport.getFatherName();
+                        String phoneNumber = telegramUserService.get().phoneNumber(chatID);
+                        String carNameID = telegramUserService.get().getChooseCar(chatID);
+                        String carName = carNameService.get().read(carNameID).getModelName();
+                        String modelID1 = carNameService.get().read(carNameID).getModelID();
+                        String modelName = carModelService.get().read(modelID1).getModelName();
+                        String carID = telegramUserService.get().getChooseCar(chatID);
+                        double price = carService.get().read(carID).getPrice();
+                        String newShartnome = "Avtomobil Sotib Olish Shartnomasi%nSotuvchi:%nNom: %s%nManzil: %s%nTelefon: %s%nSotib oluvchi:%nIsmi: %s%nFamiliyasi: %s%nOtasining ismi: %s%nTelefon: %s%nShartnoa Predmeti:%nAvtomobil nomi: %s%nModeli: %s%nYili: %s%nRangi: %sShartnoma Shartlari:%nUmumiy Qoidalar%nUshbu shartnoma 20.05.2024 kuni tuzildi va tomonlar o'rtasidagi barcha huquq va majburiyatlarni belgilaydi.%nTo'lov Shartlari%nAvtomobilning umumiy narxi: %s so'm.%nTo'lov tartibi: Naqd (to'lov usuli va muddati ko'rsatiladi).%nTopshirish-Qabul Qilish Shartlari%nAvtomobilni qabul qilish muddati: 06.06.2024.%nSotuvchi avtomobilni sotib oluvchiga texnik jihatdan soz va hujjatlari to'liq holda topshiradi%nTomonlarning Majburiyatlari%nSotuvchi avtomobilning sifati va hujjatlarining haqiqiyligi uchun javob beradi.%nSotib oluvchi avtomobil uchun to'lovni o'z vaqtida amalga oshirishi lozim.%nBoshqa Shartlar%nShartnoma 2 (ikki) nusxada tuzilgan bo'lib, har bir nusxa bir xil huquqiy kuchga ega.%nTomonlar shartnoma bo'yicha kelishmovchiliklarni muzokaralar yo'li bilan hal qilishga harakat qiladi. Agar muzokaralar yo'li bilan hal etilmasa, nizo amaldagi qonunchilikka muvofiq hal qilinadi.%nImzolar:%nSotuvchi:%nImzo: _______________%nSana: _______________%nSotib oluvchi:%nImzo: _______________%nSana: _______________".formatted(carSalonName, address, phoneNumberCarSalon, firstName, lastName, fatherName,
+                                phoneNumber, carName, modelName, "2024", "White", price);
+                    }
 
                 }
             }

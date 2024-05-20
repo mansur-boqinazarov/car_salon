@@ -9,27 +9,29 @@ import uz.pdp.telegram.util.json.TelegramUserSerializer;
 import java.util.ArrayList;
 import java.util.List;
 public class TelegramUserServiceimp implements TelegramUserService{
-    TelegramUserSerializer serializer = new TelegramUserSerializer();
-
+    private TelegramUserSerializer serializer = new TelegramUserSerializer();
     @Override
     public void addNumber(Long chatID, Contact contact) {
+        System.out.println(contact);
         TelegramUser telegramUser = TelegramUser
                 .builder()
                 .chatID(chatID)
                 .phoneNumber(contact.phoneNumber())
                 .firstName(contact.firstName())
-                .lastName(contact.lastName())
+                .passportID(null)
                 .state(DefaultState.SEND_PHONE_NUMBER)
                 .build();
         try {
-            List<TelegramUser> telegramUsers = serializer.readFromFile();
+            TelegramUserSerializer serializer1 = new TelegramUserSerializer();
+            List<TelegramUser> telegramUsers = serializer1.readFromFile();
             telegramUsers.add(telegramUser);
-            serializer.writeToFile(telegramUsers);
+            serializer1.writeToFile(telegramUsers);
         }
         catch (NullPointerException e){
+            TelegramUserSerializer serializer1 = new TelegramUserSerializer();
             List<TelegramUser> telegramUsers = new ArrayList<>();
             telegramUsers.add(telegramUser);
-            serializer.writeToFile(telegramUsers);
+            serializer1.writeToFile(telegramUsers);
         }
     }
 
@@ -67,6 +69,7 @@ public class TelegramUserServiceimp implements TelegramUserService{
         List<TelegramUser> telegramUsers = serializer.readFromFile();
         TelegramUser telegramUser = telegramUsers.stream().filter(user -> user.getChatID().equals(chatID)).toList().get(0);
         telegramUser.setPassportID(passportID);
+        serializer.writeToFile(telegramUsers);
     }
 
     @Override
@@ -104,5 +107,11 @@ public class TelegramUserServiceimp implements TelegramUserService{
         List<TelegramUser> telegramUsers = serializer.readFromFile();
         TelegramUser telegramUser = telegramUsers.stream().filter(user -> user.getChatID().equals(chatID)).toList().get(0);
         return telegramUser.getChooseCarSalonID();
+    }
+    @Override
+    public String phoneNumber(Long chatID){
+        List<TelegramUser> telegramUsers = serializer.readFromFile();
+        TelegramUser telegramUser = telegramUsers.stream().filter(user -> user.getChatID().equals(chatID)).toList().get(0);
+        return telegramUser.getPhoneNumber();
     }
 }

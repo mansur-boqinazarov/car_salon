@@ -14,4 +14,5 @@ public interface TelegramUserService {
     void chooseCar(Long chatID, String id);
     String getChooseCarSalon(Long chatID);
     String getChooseCar(Long chatID);
+    String phoneNumber(Long chatID);
 }

@@ -38,4 +38,9 @@ public class InlineKeyboardMarkupFactory extends Keyboard {
         buttons[0][1] = button2;
         return new InlineKeyboardMarkup(buttons);
     }
+    public static InlineKeyboardMarkup orderButton(){
+        InlineKeyboardButton button = new InlineKeyboardButton("Shartnoma olish");
+        button.callbackData("shartnoma");
+        return new InlineKeyboardMarkup(button);
+    }
 }
