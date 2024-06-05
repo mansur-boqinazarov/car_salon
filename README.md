@@ -5,8 +5,8 @@ Car Salon - Bu loyihada avtomobil saloni uchun Java Spring Boot dasturi ishlab c
 ## Mundarija
 
 
-- [Channel](#https://t.me/Java_developers_1)
-- [Aloqa]([Aloqa](tel:+998911552498))
+- [Channel](https://t.me/Java_developers_1)
+- Aloqa +998911552498
 - [Telegram](https://t.me/Mansurbek_Boqinazarov)
 
 ## Boshlanish
